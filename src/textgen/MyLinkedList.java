@@ -56,7 +56,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			tail = addedNode;
 
 			// addedNode automatically points next to null, check constructor
-
 			size++;
 
 			replaced = true;
