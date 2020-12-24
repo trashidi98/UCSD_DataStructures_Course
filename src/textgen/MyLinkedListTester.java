@@ -247,8 +247,12 @@ public class MyLinkedListTester {
 	@Test
 	public void testSize()
 	{
-		// TODO: implement this test
+		assertEquals(10, longerList.size());
+		longerList.add(9, 22);
+		assertEquals(11, longerList.size());
 
+		shortList.remove(1);
+		assertEquals(1, shortList.size());
 	}
 
 	
