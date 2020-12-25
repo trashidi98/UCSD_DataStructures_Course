@@ -44,20 +44,10 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			replaced = true;
 		}
 		else {
-
-			// Set the new node's prev to be current tail [currTail] <- [newTail]
 			addedNode.prev = tail;
-
-			// Set currTail next value to new node [currTail] <-> [newTail]
 			lastTail.next = addedNode;
-
-			//			       								TAIL
-			// Set tail value to new node [currTail] <-> [newTail]
 			tail = addedNode;
-
-			// addedNode automatically points next to null, check constructor
 			size++;
-
 			replaced = true;
 		}
 
@@ -70,15 +60,11 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 * @throws IndexOutOfBoundsException if the index is out of bounds.
 	 */
 	public E get(int index) {
-
-		// Sanitize Input
 		if (index < 0 || index >= this.size || head == null || tail == null) {
 			throw new IndexOutOfBoundsException();
 		}
-
 		LLNode<E> currNode = this.head;
 		E elementData = this.head.data;
-
 
 		for (int i = 0; i < this.size; i++) {
 			if (i == index) {
@@ -98,16 +84,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 * @param element The element to add
 	 */
 	public void add(int index, E element) {
-		/*
-		* Behavior should be:
-		* Empty list is indexOutofBounds
-		* Any index < 0 or greater than size is out of Bounds
-		* Null objects cannot be added to LL
-		* When adding to a specific index all other elements 'shift right'
-		* and size increases by 1
-		* */
-
-
 		if(this.size == 0 || index < 0 || index >= this.size) {
 			throw new IndexOutOfBoundsException("Check index");
 		}
@@ -115,35 +91,19 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		if(element == null) {
 			throw new NullPointerException("Passed null object");
 		}
-
 		LLNode<E> addedNode = new LLNode<E>(element);
-
-		// Get node at index
 		LLNode<E> currNode = getNode(index);
-
 		LLNode<E> nodeBefore = currNode.prev;
-
-		// The currNode must point back to addedNode
 		currNode.prev = addedNode;
-
-		// The addedNode must point to the currNode
 		addedNode.next = currNode;
 
-		// Creating a []<->[] link between them
-
 		if (index == 0) {
-
 			addedNode.prev = null;
-
 			this.head = addedNode;
 		}
 
 		else {
-
-			// Set lastNode next to added
 			nodeBefore.next = addedNode;
-
-			// Set addedNode prev to nodeBefore
 			addedNode.prev = nodeBefore;
 		}
 
@@ -174,7 +134,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		LLNode<E> lastNode = currNode.prev;
 		LLNode<E> nextNode = currNode.next;
 
-		// Head Case
 		if(index == 0) {
 			head = nextNode;
 			currNode.next = null;
@@ -182,7 +141,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			size--;
 		}
 
-		// Tail Case
 		else if(index == size-1) {
 			tail = lastNode;
 			currNode.prev = null;
@@ -190,7 +148,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			size--;
 		}
 
-		// Any middle nodes
 		else {
 			nextNode.prev = lastNode;
 			lastNode.next = nextNode;
@@ -228,7 +185,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		return replaced;
 	}
 
-	//	Helper Method
 	public LLNode<E> getNode(int index) {
 
 		LLNode<E> currNode = this.head;
@@ -242,8 +198,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		}
 		return currNode;
 	}
-
-	// Helper
 
 	public void printNodes() {
 
