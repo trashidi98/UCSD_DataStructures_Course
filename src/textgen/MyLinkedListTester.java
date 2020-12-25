@@ -30,7 +30,6 @@ public class MyLinkedListTester {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		// Feel free to use these lists, or add your own
 	    shortList = new MyLinkedList<String>();
 		shortList.add("A");
 		shortList.add("B");
@@ -113,7 +112,6 @@ public class MyLinkedListTester {
 	@Test
 	public void testRemove()
 	{
-		// Removing from empty list is not applicable
 		try {
 			emptyList.remove(1);
 		}
@@ -122,7 +120,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// Removing from negative index
 		try {
 			shortList.remove(-1);
 		}
@@ -131,7 +128,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// Removing index greater than size
 		try {
 			shortList.remove(3);
 		}
@@ -140,21 +136,18 @@ public class MyLinkedListTester {
 
 		}
 
-		// Head Case
 		int a = list1.remove(0);
 		assertEquals("Remove: check a is correct ", 65, a);
 		assertEquals("Remove: check element 0 is correct ", (Integer)21, list1.get(0));
 		assertEquals("Remove: check size is correct ", 2, list1.size());
 		assertEquals("Check the head", (Integer)21, list1.head.data);
 
-		// Tail Case
 		int b = longerList.remove(9);
 		assertEquals("Remove: check b is correct ", 9, b);
 		assertEquals("Remove: check tail element is correct ", (Integer)8, longerList.get(8));
 		assertEquals("Remove: check size is correct ", 9, longerList.size());
 		assertEquals("Check the head", (Integer)8, longerList.tail.data);
 
-		// Generic Middle Case
 		int c = longerList.remove(3);
 		assertEquals("Remove: check c is correct ", 3, c);
 		assertEquals("Remove: check element is correct ", (Integer)4, longerList.get(3));
@@ -162,7 +155,6 @@ public class MyLinkedListTester {
 
 		assertEquals("Check the next", (Integer)5, longerList.get(4));
 		assertEquals("Check the prev", (Integer)2, longerList.get(2));
-
 	}
 	
 	/** Test adding an element into the end of the list, specifically
@@ -177,7 +169,6 @@ public class MyLinkedListTester {
 
         boolean result;
 
-        // Check not null
 		try{
 			emptyList.add(null);
 			fail("Check input is not null");
@@ -186,59 +177,26 @@ public class MyLinkedListTester {
 
 		}
 
-		// CASE 1: Empty List when added
 		result =  emptyList.add(eight);
 
-		// Check for a true
 		assertEquals(true, result);
-
-		// Check for size
 		assertEquals(1, emptyList.size);
-
-		// Check head value
 		assertEquals(eight, emptyList.head.data);
-
-		// Check tail value
 		assertEquals(eight, emptyList.head.data);
-
 		assertEquals(null, emptyList.tail.next);
 
-
-
-		// CASE 2: One Node exists when adding a new one
-
-		// Check for a true
 
 		result = emptyList.add(nine);
-
-		// Check for size
-
 		assertEquals(2, emptyList.size);
-
-		// Check head value
-
 		assertEquals(eight, emptyList.head.data);
-
-		// Check tail value
 		assertEquals(nine, emptyList.tail.data);
-
 		assertEquals(null, emptyList.tail.next);
 
-
-		// CASE 3: Check off the end of the larger array
 
 		result = longerList.add(ten);
 
-		// Check for size
-
 		assertEquals(11, longerList.size);
-
-		// Check for tail element
-
 		assertEquals(ten, longerList.tail.data);
-
-		// Check that tail has null beside it
-
 		assertEquals(null, longerList.tail.next);
 	}
 
@@ -271,12 +229,6 @@ public class MyLinkedListTester {
 
 		boolean result;
 
-		// What happens when you add at index
-
-		// Sanitize input
-
-		// Null objects
-
 		try {
 			shortList.add(1, null);
 		}
@@ -284,9 +236,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// IndexOutofBounds
-
-		// Invalid index given empty list
 		try {
 			emptyList.add(0, eight);
 		}
@@ -294,7 +243,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// Invalid Index
 		try {
 		emptyList.add(-1, eight);
 		}
@@ -302,7 +250,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// Checking given an index larger than list
 		try {
 			shortList.add(2, "eight");
 		}
@@ -317,8 +264,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// Tests for both at same time the first statement should throw error
-
 		try {
 			shortList.add(-1, null);
 		}
@@ -326,37 +271,21 @@ public class MyLinkedListTester {
 		catch (IndexOutOfBoundsException e) {
 
 		}
-		// CASE 1: Singular Node
+
 		singularList.add(0, eight);
-
-		// Check for element
 		assertEquals(eight, singularList.get(0));
-
-		// Check the next element is the old one
 		assertEquals(new Integer(11), singularList.get(1));
-
-		// Check the element is now head
 		assertEquals(eight, singularList.head.data);
-
-		// Check that the element moved into tail
 		assertEquals( new Integer(11), singularList.tail.data);
-
-		// Check for size increment
 		assertEquals(2, singularList.size);
 
-		// CASE 2: 2 or more nodes
+
 		shortList.add(1, "C");
 
-		// Check for element
 		assertEquals("C", shortList.get(1));
-
-		// Check the next element is the old one
 		assertEquals("B", shortList.get(2));
-
-		// Check for prev element is unchanged
 		assertEquals("A", shortList.get(0));
 
-		// CASE 3: Check off ends of longerList
 
 		longerList.add(9, ten);
 		assertEquals(ten, longerList.get(9));
@@ -365,18 +294,9 @@ public class MyLinkedListTester {
 		assertEquals(eight, longerList.get(0));
 
 
-		// Check that the next element is the old one, and remains tail
-
 		assertEquals(new Integer(9), longerList.get(11));
-
 		assertEquals(new Integer(9), longerList.tail.data);
-
-		// Check previous element is unchanged
-
 		assertEquals(eight, longerList.get(9));
-
-		// Check head
-
 		assertEquals(eight, longerList.head.data);
 	}
 	
@@ -392,7 +312,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// Setting from negative index
 		try {
 			shortList.set(-1, "A");
 		}
@@ -401,7 +320,6 @@ public class MyLinkedListTester {
 
 		}
 
-		// Setting index greater than size
 		try {
 			shortList.set(3, "A");
 		}
@@ -418,10 +336,7 @@ public class MyLinkedListTester {
 
 		}
 
-		// Check the element removed is returned
 		assertEquals("A", shortList.set(0, "Z"));
-
-		// Check the element has been replaced
 		assertEquals("Z", shortList.get(0));
 
 		assertEquals((Integer)0, longerList.set(0, 9));
