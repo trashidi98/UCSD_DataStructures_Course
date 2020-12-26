@@ -12,7 +12,7 @@ import java.util.Random;
 public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 
 	// The list of words with their next words
-	private List<ListNode> wordList; 
+	private List<ListNode> wordList;
 	
 	// The starting "word"
 	private String starter;
@@ -32,7 +32,37 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	@Override
 	public void train(String sourceText)
 	{
-		// TODO: Implement this method
+		// The string array
+
+		String[] strArray = sourceText.split("[a-zA-Z]+");
+
+		ListNode lastWordNode = new ListNode("");
+
+
+		// For each word in sourceText
+		for (String currentWord : strArray) {
+
+			// If the word hasn't appeared before add on a new ListNode obj for this word
+
+			// LOGIC BELOW DOESNT MAKE SENSE BECAUSE OF THE WE DONT WANT JUST TO COMPARE TO LAST WORD
+			
+			if(!currentWord.equalsIgnoreCase(lastWordNode.getWord())) {
+
+				ListNode currentWordNode = new ListNode(currentWord);
+				wordList.add(currentWordNode);
+			}
+
+
+			// Move to the next word
+
+			// Because its a linked list you can access the last elements' nextWords LL
+			// Add THIS CURRENT WORD to last elements' nextWords
+
+			// Once you reach the last word:
+			// set nextWord to wordList.head
+			// set last word to wordList.tail
+		}
+
 	}
 	
 	/** 
