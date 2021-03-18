@@ -1,9 +1,6 @@
 package textgen;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Random;
+import java.util.*;
 
 /** 
  * An implementation of the MTG interface that uses a list of lists.
@@ -26,14 +23,70 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		starter = "";
 		rnGenerator = generator;
 	}
-	
-	
 	/** Train the generator by adding the sourceText */
 	@Override
 	public void train(String sourceText)
 	{
-		// TODO: Implement this method
+		// The string array
+		String[] words = sourceText.split("[., ]+");
+
+		this.starter = words[0];
+		String prevWord = starter;
+
+		int prevWordIndex = 0;
+
+		for(int i = 1; i < words.length; i++) {
+			String word = words[i];
+
+			prevWordIndex = checkWordList(prevWord);
+
+			// Check to see if prevWord is already a node in the list
+			if( prevWordIndex >= 0 ) {
+				// if it is a a node in the list
+				// Add w as a nextWord to the prevWord node
+				wordList.get(prevWordIndex).addNextWord(word);
+			}
+
+			else {
+				// else its not a node
+				// Add a new node with prevWord as the node word
+				wordList.add(new ListNode(prevWord));
+
+				// Add w as nextword to prevWord node
+				prevWordIndex = checkWordList(prevWord);
+				wordList.get(prevWordIndex).addNextWord(word);
+			}
+			// Set prevWord = w
+			prevWord = word;
+		}
+
+		// Adding the last word
+		wordList.add(new ListNode(words[words.length -1]));
+		// Get the last word in source text (node) and set its next word to be first word so program can generate words endlessly
+		wordList.get(wordList.size()-1).addNextWord(words[0]);
+
+//		A QUICK TESTER
+
+//		for(ListNode n : wordList){
+//			System.out.println(n);
+//		}
 	}
+
+
+	public int checkWordList(String word) {
+    int value = -1;
+    int count = 0;
+	    for(ListNode llnode : wordList) {
+            if ( llnode.getWord().equalsIgnoreCase(word) ) {
+                value = count;
+                return value;
+            } else {
+                value = -1;
+            }
+            count++;
+        }
+	    return value;
+    }
 	
 	/** 
 	 * Generate the number of words requested.
@@ -65,17 +118,19 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	}
 	
 	// TODO: Add any private helper methods you need here.
-	
-	
+
+
 	/**
 	 * This is a minimal set of tests.  Note that it can be difficult
 	 * to test methods/classes with randomized behavior.   
 	 * @param args
 	 */
+
 	public static void main(String[] args)
 	{
 		// feed the generator a fixed random value for repeatable behavior
 		MarkovTextGeneratorLoL gen = new MarkovTextGeneratorLoL(new Random(42));
+
 		String textString = "Hello.  Hello there.  This is a test.  Hello there.  Hello Bob.  Test again.";
 		System.out.println(textString);
 		gen.train(textString);
@@ -109,46 +164,38 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		gen.retrain(textString2);
 		System.out.println(gen);
 		System.out.println(gen.generateText(20));
-	}
-
 }
 
 /** Links a word to the next words in the list 
  * You should use this class in your implementation. */
-class ListNode
-{
-    // The word that is linking to the next words
+class ListNode {
+	// The word that is linking to the next words
 	private String word;
-	
+
 	// The next words that could follow it
 	private List<String> nextWords;
-	
-	ListNode(String word)
-	{
+
+	ListNode(String word) {
 		this.word = word;
 		nextWords = new LinkedList<String>();
 	}
-	
-	public String getWord()
-	{
+
+	public String getWord() {
 		return word;
 	}
 
-	public void addNextWord(String nextWord)
-	{
+	public void addNextWord(String nextWord) {
 		nextWords.add(nextWord);
 	}
-	
-	public String getRandomNextWord(Random generator)
-	{
+
+	public String getRandomNextWord(Random generator) {
 		// TODO: Implement this method
-	    // The random number generator should be passed from 
-	    // the MarkovTextGeneratorLoL class
-	    return null;
+		// The random number generator should be passed from
+		// the MarkovTextGeneratorLoL class
+		return null;
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		String toReturn = word + ": ";
 		for (String s : nextWords) {
 			toReturn += s + "->";
@@ -156,7 +203,10 @@ class ListNode
 		toReturn += "\n";
 		return toReturn;
 	}
-	
+
 }
+
+}
+
 
 
