@@ -119,7 +119,7 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 			// Set currWord to be randomWord
 			currword = randomWord;
 
-			// Increment word count 
+			// Increment word count
 			i++;
 		}
 
