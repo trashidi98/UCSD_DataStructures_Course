@@ -80,8 +80,31 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	 */
 	@Override
 	public String generateText(int numWords) {
-		// TODO: Implement this method
-		return null;
+
+		String currword = this.starter;
+		String output = "";
+		output = output.concat(currword).concat(" ");
+
+		int i = 1;
+
+		String randomWord = "";
+
+		while( i < numWords ) {
+
+			int currNodeIndex = checkWordList(currword);
+
+			ListNode currNode = wordList.get(currNodeIndex);
+
+			randomWord = currNode.getRandomNextWord(this.rnGenerator);
+
+			output = output.concat(randomWord).concat(" ");
+
+			currword = randomWord;
+
+			i++;
+		}
+
+		return output;
 	}
 
 
