@@ -65,11 +65,6 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		// Get the last word in source text (node) and set its next word to be first word so program can generate words endlessly
 		wordList.get(wordList.size()-1).addNextWord(words[0]);
 
-//		A QUICK TESTER
-
-//		for(ListNode n : wordList){
-//			System.out.println(n);
-//		}
 	}
 
 
