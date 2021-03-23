@@ -59,22 +59,6 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		wordList.get(wordList.size() - 1).addNextWord(words[0]);
 	}
 
-
-	public int checkWordList(String word) {
-		int value = -1;
-		int count = 0;
-		for (ListNode llnode : wordList) {
-			if (llnode.getWord().equalsIgnoreCase(word)) {
-				value = count;
-				return value;
-			} else {
-				value = -1;
-			}
-			count++;
-		}
-		return value;
-	}
-
 	/**
 	 * Generate the number of words requested.
 	 */
@@ -126,8 +110,20 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		// TODO: Implement this method.
 	}
 
-	// TODO: Add any private helper methods you need here.
-
+	private int checkWordList(String word) {
+		int value = -1;
+		int count = 0;
+		for (ListNode llnode : wordList) {
+			if (llnode.getWord().equalsIgnoreCase(word)) {
+				value = count;
+				return value;
+			} else {
+				value = -1;
+			}
+			count++;
+		}
+		return value;
+	}
 
 	/**
 	 * This is a minimal set of tests.  Note that it can be difficult
