@@ -10,7 +10,7 @@ This is what the front-end looks like.
 
 ![alt text](https://github.com/trashidi98/UCSD_DataStructures_Course/blob/commentmaster/front-end.png "TextEditor App")
 
-There is **autocomplete** functionality,**spellcheck** which are the most exciting. You can calculate the **Flesch score** and I also got a chance to work on **Markov Text Generation** whereby by training our algorithm to recognize certain patterns in an input text it can generate entirely new sentences. Pretty cool. 
+There is **autocomplete** functionality, **spellcheck** which are the most exciting. You can calculate the **Flesch score** and I also got a chance to work on **Markov Text Generation** whereby by training our algorithm to recognize certain patterns in an input text it can generate entirely new sentences. Pretty cool. 
 
 Below I highlight the core concepts from the course.
 
