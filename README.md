@@ -12,6 +12,11 @@ This is what the front-end looks like.
 
 There is **autocomplete** functionality, **spellcheck** which are the most exciting. You can calculate the **Flesch score** and I also got a chance to work on **Markov Text Generation** whereby by training our algorithm to recognize certain patterns in an input text it can generate entirely new sentences. Pretty cool. 
 
+## Branches 
+
+I tried to follow a realistic Git flow (like a real SWE team would) by creating branches for each piece of work. They are usually named week2 or week4pt2. I write code on these branches, with comments while I work and merge to *commentmaster* branch. Then I remove these comments and merge into *main* just to keep the original work clean. You can look under branches/commentmaster to see my code with relevent comments. 
+
+
 Below I highlight the core concepts from the course.
 
 ## Weekly Assignments 
@@ -22,18 +27,18 @@ Setup
 
 ### Week 2 : Working with Strings 
 
-String functions, Regex search, tokenization, and splitting, calculating Flesch score
+**String functions, Regex search, tokenization, and splitting, calculating Flesch score**
 
 ### Week 3 : Effeciency Analysis and Benchmarking 
 
-Big O-notation, analysis of algorithms, sorting algorithms, using Java time, benchmarking our Flesch score algorithm
+**Big O-notation, analysis of algorithms, sorting algorithms, using Java time, benchmarking our Flesch score algorithm**
 
 
 ### Week 4 : Interfaces, Linked Lists vs. Arrays and Correctness
 
-LinkedList analysis, Implementation of add(), get() etc. 
+**LinkedList analysis, Implementation of add(), get() etc.**
 
-Understanding Markov Text Generation, Implementing it using a LinkedList  
+**Understanding Markov Text Generation, Implementing it using a LinkedList**
 
 ### Week 5 : Trees! (Including Binary Search Trees and Tries) 
 
