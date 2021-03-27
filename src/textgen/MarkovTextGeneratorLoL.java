@@ -107,7 +107,7 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	 */
 	@Override
 	public void retrain(String sourceText) {
-		
+
 		this.starter = "";
 
 		this.wordList = new LinkedList<ListNode>();
@@ -201,10 +201,8 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		}
 
 		public String getRandomNextWord(Random generator) {
-			// TODO: Implement this method
-			// The random number generator should be passed from
-			// the MarkovTextGeneratorLoL class
-			return null;
+			int randomNumber = generator.nextInt(nextWords.size());
+			return nextWords.get(randomNumber);
 		}
 
 		public String toString() {
