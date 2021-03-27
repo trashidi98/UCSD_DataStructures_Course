@@ -107,7 +107,12 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	 */
 	@Override
 	public void retrain(String sourceText) {
-		// TODO: Implement this method.
+		
+		this.starter = "";
+
+		this.wordList = new LinkedList<ListNode>();
+
+		train(sourceText);
 	}
 
 	private int checkWordList(String word) {
