@@ -2,9 +2,9 @@
 
 ## Project Overview 
 
-This code is from a course I was taking online at UCSD called "Data Structures and Performance" (link at end of README). However, I should say that this course did indeed teach me a lot, and the main functionality is indeed implemented by me. It taught me about concepts that were either glossed over in school or not mentioned at all. It runs at a very good pace allowing me to absorb course content to maximize my learning for the long term. 
+This code is from a course I was taking online at UCSD called "Data Structures and Performance" (link at end of README). It taught me about important concepts in Data Structures that were either glossed over in school or not mentioned at all.  
 
-So what parts did I implement? The front-end is not mine, however, almost all of the core functionality in the backend is mine. For example, we implemented a LinkedList in Week4 and all of the add() get() remove() set() were implemented by me. The code for that can be found in src/textgen/MyLinkedList.java. If you are interested in which parts are mine, you can check commit history.  
+The front-end implementation is not mine, however, almost all of the core functionality in the backend is mine. For example, we implemented a LinkedList in Week4 and all of the add() get() remove() set() were implemented by me. The code for that can be found in src/textgen/MyLinkedList.java. If you are interested in which parts are mine, you can check commit history.  
 
 This is what the front-end looks like. 
 
