@@ -22,16 +22,19 @@ public class DictionaryLL implements Dictionary
      * (it wasn't already there). */
     public boolean addWord(String word) {
 
+        // Make sure dictionary is not empty, if it is add
         if( this.dict.isEmpty() ) {
             dict.add(word.toLowerCase());
             return true;
         }
 
+        // If that word is NOT a word in our dict, add it
         else if( !isWord(word) ) {
             dict.add(word.toLowerCase());
             return true;
         }
 
+        // We didn't add any words
     	return false;
     }
 
