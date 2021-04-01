@@ -22,14 +22,17 @@ public class DictionaryBST implements Dictionary
      * (it wasn't already there). */
     public boolean addWord(String word) {
 
+        // If empty, add word
         if(this.dict.isEmpty()) {
             this.dict.add(word.toLowerCase());
         }
 
+        // If word is NOT in dictionary, add word
         else if(!isWord(word)){
             dict.add(word.toLowerCase());
         }
 
+        // Otherwise it is in the dictionary, return false
         return false;
     }
 
@@ -39,9 +42,13 @@ public class DictionaryBST implements Dictionary
 
     /** Is this a word according to this dictionary? */
     public boolean isWord(String s) {
+
+        // If this dict contains word, return true
         if(this.dict.contains(s.toLowerCase())) {
             return true;
         }
+
+        // Otherwise it doesn't, return false 
         return false;
     }
 
